@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Mrs Eaves";
+    src: url('@/assets/fonts/Mrs-Eaves-Small-Caps-OT-.otf');
+    font-weight: normal;
+    font-variant: small-caps;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Mrs Eaves";
+    src: url('@/assets/fonts/Mrs-Eaves-Small-Caps-OT-.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h2 {
+    font-family: "Mrs Eaves";
+    font-size: 40px;
+    text-transform: uppercase;
+    color: $color-red;
+}
+
+p {
+    font-size: 18px;
+    text-align: left;
+}
