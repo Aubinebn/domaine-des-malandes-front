@@ -31,7 +31,7 @@
 
             <div class="content__arrow arrow">
                 <div class="arrow__line"></div>
-                <img class="arrow__end" src="/graphic-elements/losange-petit-rouge.png">
+                <img class="arrow__end" src="/graphic-elements/losange_red.svg">
             </div>
 
             <img :src="getImageUrl(presentation.logo.url)"
@@ -54,7 +54,7 @@
             </div>
 
             <img class="content__dots"
-                src="/graphic-elements/three-dots-horizontal.png"
+                src="/graphic-elements/horizontal_dots.svg"
             >
         </div>
     </div>
@@ -117,7 +117,6 @@
         }
 
         &__end {
-            margin-right: -1px;
             margin-top: -3px;
         }
     }
