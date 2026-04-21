@@ -2,12 +2,14 @@
     import HeroBanner from '@/components/HeroBanner.vue';
     import Presentation from '@/components/Presentation.vue';
     import Historic from '@/components/Historic.vue';
+    import Wines from '@/components/Wines.vue';
 </script>
 
 <template>
     <HeroBanner/>
     <Presentation/>
     <Historic/>
+    <Wines/>
 </template>
 
 <style scoped></style>
