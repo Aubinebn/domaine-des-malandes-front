@@ -20,7 +20,22 @@ h2 {
     color: $color-red;
 }
 
+h3 {
+    font-family: "Mr Eaves";
+    font-size: 20px;
+    text-transform: uppercase;
+    color: $color-red;
+}
+
 p {
     font-size: 18px;
     text-align: left;
+}
+
+li::marker {
+    color: $color-red;
+}
+
+li strong {
+    color: $color-red;
 }

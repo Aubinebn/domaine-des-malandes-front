@@ -3,6 +3,7 @@
     import Presentation from '@/components/Presentation.vue';
     import Historic from '@/components/Historic.vue';
     import Wines from '@/components/Wines.vue';
+    import Map from '@/components/Map.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@
     <Presentation/>
     <Historic/>
     <Wines/>
+    <Map/>
 </template>
 
 <style scoped></style>
