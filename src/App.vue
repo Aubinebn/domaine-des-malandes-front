@@ -4,6 +4,7 @@
     import Historic from '@/components/Historic.vue';
     import Wines from '@/components/Wines.vue';
     import Map from '@/components/Map.vue';
+    import KnowHow from '@/components/KnowHow.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
     <Historic/>
     <Wines/>
     <Map/>
+    <KnowHow/>
 </template>
 
 <style scoped></style>
