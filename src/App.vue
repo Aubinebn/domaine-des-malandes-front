@@ -5,6 +5,7 @@
     import Wines from '@/components/Wines.vue';
     import Map from '@/components/Map.vue';
     import KnowHow from '@/components/KnowHow.vue';
+    import Team from '@/components/Team.vue';
 </script>
 
 <template>
@@ -14,6 +15,7 @@
     <Wines/>
     <Map/>
     <KnowHow/>
+    <Team/>
 </template>
 
 <style scoped></style>
