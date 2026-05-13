@@ -158,7 +158,7 @@
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
 
     &__mail {
         font-weight: bold;
@@ -167,7 +167,7 @@
     .contacts_links {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 6px;
 
         img {
             width: 20px;
