@@ -6,6 +6,7 @@
     import Map from '@/components/Map.vue';
     import KnowHow from '@/components/KnowHow.vue';
     import Team from '@/components/Team.vue';
+    import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@
     <Map/>
     <KnowHow/>
     <Team/>
+    <Footer/>
 </template>
 
 <style scoped></style>
