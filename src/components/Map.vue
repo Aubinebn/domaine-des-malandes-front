@@ -239,6 +239,13 @@ function initMap() {
             margin: 20px 0 0 0;
         }
     }
+
+    &__quote {
+        font-family: "Mrs Eaves OT";
+        font-size: 32px;
+        line-height: 1.1;
+        font-style: italic;
+    }
 }
 
 .title{

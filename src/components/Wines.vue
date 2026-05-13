@@ -106,7 +106,7 @@
 .cover {
     width: 100%;
     height: auto;
-    max-height: 45vh;
+    max-height: 60vh;
     object-fit: cover;
 }
 
@@ -118,6 +118,10 @@
     align-items: center;
     gap: 20px;
     padding: 0 20px;
+
+    &__description {
+        max-width: 600px;
+    }
 }
 
 .images-left {

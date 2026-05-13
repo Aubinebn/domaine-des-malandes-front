@@ -91,7 +91,6 @@
         }
 
         &__baseline {
-            font-size: 18px;
             color: $color-red;
             text-transform: uppercase;
         }

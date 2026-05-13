@@ -104,9 +104,10 @@
         grid-column: 5 / span 4;
         margin-top: 40px;
         text-align: center;
-        font-family: "Mrs Eaves";
+        font-family: "Mrs Eaves OT";
+        font-style: italic;
         font-size: 32px;
-        line-height: 38px; /* 118.75% */
+        line-height: 1.1;
     }
 }
 

@@ -1,21 +1,33 @@
 @font-face {
     font-family: "Mrs Eaves";
-    src: url('@/assets/fonts/Mrs-Eaves-Small-Caps-OT-.otf');
-    font-weight: normal;
-    font-variant: small-caps;
-    font-style: normal;
+    src: url('@/assets/fonts/MrsEaves/MrsEavesSmallCaps.woff');
 }
 
 @font-face {
-    font-family: "Mrs Eaves";
-    src: url('@/assets/fonts/Mrs-Eaves-Small-Caps-OT-.otf');
+    font-family: "Mrs Eaves OT";
+    src: url('@/assets/fonts/MrsEaves/MrsEavesOT.otf');
+}
+
+@font-face {
+    font-family: "Mr Eaves";
+    src: url('@/assets/fonts/MrEaves/mreavesxlsanot-reg-webfont.woff');
     font-weight: normal;
-    font-style: normal;
+}
+@font-face {
+    font-family: "Mr Eaves";
+    src: url('@/assets/fonts/MrEaves/mreavesxlsanot-bold-webfont.woff');
+    font-weight: bold;
+}
+
+* {
+    font-family: "Mr Eaves";
+    font-weight: normal;
+    font-size:20px;
 }
 
 h2 {
     font-family: "Mrs Eaves";
-    font-size: 40px;
+    font-size: 48px;
     text-transform: uppercase;
     color: $color-red;
 }
@@ -23,13 +35,19 @@ h2 {
 h3 {
     font-family: "Mr Eaves";
     font-size: 20px;
+    font-weight: bold;
     text-transform: uppercase;
     color: $color-red;
 }
 
 p {
-    font-size: 18px;
+    font-size: 20px;
     text-align: left;
+    line-height: 22px;
+}
+
+strong {
+    font-weight: bold;
 }
 
 li::marker {

@@ -119,6 +119,9 @@
 
 .quote {
     grid-column: 5 / 9;
+    font-family: "Mrs Eaves OT";
+    font-size: 24px;
+    line-height:1.1
     font-style: italic;
     text-align: center;
     margin: 20px 0;
