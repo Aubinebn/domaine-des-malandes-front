@@ -39,3 +39,8 @@ li::marker {
 li strong {
     color: $color-red;
 }
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
