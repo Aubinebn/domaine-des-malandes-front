@@ -1,5 +1,8 @@
 <script setup lang="ts">
+    import { ref, onMounted } from 'vue';
     import { getImageUrl } from '@/utils/url';
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     const props = defineProps(['data', 'order', 'isLast']);
     
@@ -7,16 +10,50 @@
     props.data.date_start = new Date(props.data.date_start).getFullYear();
     if (props.data.date_end)
         props.data.date_end = new Date(props.data.date_end).getFullYear();
+        
+    gsap.registerPlugin(ScrollTrigger);
 
+    const timelineItem = ref();
+    const offset = props.order === 'invert' ? -100 : 100;
+
+    onMounted( async () => {
+
+        const description = timelineItem.value.querySelector('.description');
+        const image = timelineItem.value.querySelector('.image');
+        
+        let animationParams = {
+            duration: 1,
+            ease: "quad.easeIn",
+            scrollTrigger: {
+                trigger: timelineItem.value,
+                start: '-10px center',
+                end: '-10px center',
+                toggleActions: "play none none reverse",
+            },
+        }
+
+        gsap.from(description, {
+            x: -offset, opacity: 0, filter: "blur(2px)",
+            ...animationParams,
+
+        })
+        
+        gsap.from(image, {
+            x: offset, opacity:0, 
+            ...animationParams,
+        }) 
+    });
 </script>
 
 <template>
     <div class="timeline-item"
+        ref="timelineItem"
         :class="{ 'timeline-item--last': isLast }"
     >
 
-        <div :class="`timeline-item__image timeline-item__image--${order}`">
-            <img v-for="image in data.image"
+        <div :class="`timeline-item__image timeline-item__image--${order} image`"
+        >
+            <img v-for="image in data.image" 
                 :src="getImageUrl(image.url)"
                 :alt="image.alternativeText"
             />
@@ -40,7 +77,7 @@
             </div>
         </div>
         
-        <p :class="`timeline-item__description timeline-item__description--${order}`">
+        <p :class="`timeline-item__description timeline-item__description--${order} description`">
             {{ data.description }}
         </p>
 
@@ -54,15 +91,17 @@
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
     padding: 20px 0 60px;
+    height: 300px;
 
     &__image {
         grid-column: 1 / span 5;
         grid-row: 1;
         display: flex;
-        justify-content: center;
+        justify-content: right;
         gap: 20px;
 
         img {
+            position: relative;
             width: 100%;
             height: 280px;
             object-fit: cover;
@@ -70,6 +109,7 @@
 
         &--invert {
             grid-column: 8 / span 5;
+            justify-content: left;
         }
     }
 
