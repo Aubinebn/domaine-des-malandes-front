@@ -3,27 +3,28 @@
     import api from '@/services/api';
     import { getImageUrl } from '@/utils/url';
 
-    const heroBanner = ref();
 
-    async function getHeroBanner() 
+    async function getHeroBannerData() 
     {
         const res = await api.get('/banniere?populate=*');
         return res.data.data
     }
 
+    const heroBannerData = ref();
     onMounted(async () => {
-        heroBanner.value = await getHeroBanner();
+        heroBannerData.value = await getHeroBannerData();
+
     })
 
 </script>
 
 <template>
-    <div v-if="heroBanner" 
-        :style="{ backgroundImage: `url(${getImageUrl(heroBanner.background.url)})` }"
+    <div v-if="heroBannerData"
+        :style="{ backgroundImage: `url(${getImageUrl(heroBannerData.background.url)})` }"
         class="hero-banner"
     >
-        <img :src="getImageUrl(heroBanner.logo.url)"
-            :alt="heroBanner.logo.alternativeText"
+        <img :src="getImageUrl(heroBannerData.logo.url)"
+            :alt="heroBannerData.logo.alternativeText"
             class="logo"
         />
     </div>

@@ -14,26 +14,26 @@
             },
         },
         {
-            encodeValuesOnly: true, // prettify URL
+            encodeValuesOnly: true,
         }
     );
 
-    async function getHistoric() 
+    async function getHistoricData() 
     {
         const res = await api.get(`/historique?${params}`);
         return res.data.data
     }
 
-    const historic = ref();
+    const historicData = ref();
 
     onMounted(async () => {
-        historic.value = await getHistoric();
+        historicData.value = await getHistoricData();
     })
 
 </script>
 
 <template>
-    <div v-if="historic"
+    <div v-if="historicData"
         id="historic"
         class="historic"
     >
@@ -47,21 +47,21 @@
                 <img class="title__icon"
                     src="/graphic-elements/square_losange_red.svg"
                 >
-                <h2>{{ historic.title }}</h2>
+                <h2>{{ historicData.title }}</h2>
             </div>
 
             <div class="historic__timeline timeline-container">
-                <div v-for="(item, index) in historic.timeline" :key="item.id">
+                <div v-for="(item, index) in historicData.timeline" :key="item.id">
                     <TimelineItem 
                         :data="item" 
                         :order="index % 2 == 0 ? 'normal' : 'invert'"
-                        :isLast="index === historic.timeline.length - 1"
+                        :isLast="index === historicData.timeline.length - 1"
                     />
                 </div>
             </div>
 
             <p class="historic__quote">
-                {{ historic.quote }}
+                {{ historicData.quote }}
             </p>
         </div>
     </div>

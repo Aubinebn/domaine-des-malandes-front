@@ -4,22 +4,22 @@
     import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     import { getImageUrl } from '@/utils/url';
 
-    const knowHow = ref();
-
-    async function getKnowHow() 
+    async function getKnowHowData() 
     {
         const res = await api.get(`/savoir-faire?populate=*`);
         return res.data.data
     }
 
+    const knowHowData = ref();
+    
     onMounted(async () => {
-        knowHow.value = await getKnowHow();
+        knowHowData.value = await getKnowHowData();
     });
     
 </script>
 
 <template>
-<div v-if="knowHow" id="know-how" class="know-how">
+<div v-if="knowHowData" id="know-how" class="know-how">
 
     <div class="separator">
         <div class="separator__line"></div>
@@ -27,14 +27,14 @@
     </div>
 
     <div class="container grid-container content">
-        <h2 class="content__title">{{ knowHow.title }}</h2>
+        <h2 class="content__title">{{ knowHowData.title }}</h2>
         <p class="content__text">
             <StrapiBlocks
-                :content="knowHow.content"
+                :content="knowHowData.content"
             />
         </p>
         <div class="content__images secondary-images">
-            <div v-for="(image, index) in knowHow.secondary_images" 
+            <div v-for="(image, index) in knowHowData.secondary_images" 
                 :key="index" 
                 class="secondary-images__image"
             >
@@ -46,8 +46,8 @@
     </div>
 
     <div class="main-image">
-        <img :src="getImageUrl(knowHow.main_image.formats.large.url)" 
-            :alt="knowHow.main_image.alternativeText"
+        <img :src="getImageUrl(knowHowData.main_image.formats.large.url)" 
+            :alt="knowHowData.main_image.alternativeText"
             class="main-image__image"
         >
     </div>

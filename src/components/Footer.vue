@@ -24,53 +24,52 @@
         }
     );
     
-    async function getFooter() 
+    async function getFooterData() 
     {
         const res = await api.get(`/footer?${params}`);
-        // const res = await api.get(`/footer?populate=*`);
         return res.data.data
     }
 
-    const footer = ref();
+    const footerData = ref();
     onMounted(async () => {
-        footer.value = await getFooter();
+        footerData.value = await getFooterData();
     });
     
 </script>
 
 <template>
-<footer v-if="footer">
-    <div v-if="footer.title" class="container grid-container title">
+<footer v-if="footerData">
+    <div v-if="footerData.title" class="container grid-container title">
         
         <img src="/graphic-elements/linked_red_horizontal_dots.svg" alt="" class="title__top-icon">
 
         <div class="title__before"></div>
-        <h2 class="title__text">{{ footer.title }}</h2>
+        <h2 class="title__text">{{ footerData.title }}</h2>
         <div class="title__after"></div>
     </div>
 
     <div class="container footer">
     
         <img class="footer__logo" 
-            :src="getImageUrl(footer.logo.formats.small.url)"
-            :alt="footer.logo.alternativeText"
+            :src="getImageUrl(footerData.logo.formats.small.url)"
+            :alt="footerData.logo.alternativeText"
         >
         
         <div class="footer__address">
-            <p>{{ footer.address }}</p>
-            <p>{{ footer.city }}</p>
+            <p>{{ footerData.address }}</p>
+            <p>{{ footerData.city }}</p>
         </div>
 
         <div class="footer__separator"></div>
 
         <div class="footer__contacts contacts">
-            <a v-if="footer.mail" :href="'mailto:' + footer.mail"
+            <a v-if="footerData.mail" :href="'mailto:' + footerData.mail"
                 class="contacts__mail"
             >
-                {{ footer.mail }}
+                {{ footerData.mail }}
             </a>
 
-            <div v-for="social in footer.social_links" 
+            <div v-for="social in footerData.social_links" 
                 class="contacts_links"
             >
                 <img v-if="social.logo" :src="getImageUrl(social.logo.url)" alt="">
@@ -78,12 +77,12 @@
             </div>
         </div>
 
-        <div v-if="footer.certificate" class="footer__separator"></div>
+        <div v-if="footerData.certificate" class="footer__separator"></div>
 
-        <img v-if="footer.certificate"
+        <img v-if="footerData.certificate"
             class="footer__certificate"
-            :src="getImageUrl(footer.certificate.url)" 
-            :alt="footer.certificate.alternativeText"
+            :src="getImageUrl(footerData.certificate.url)" 
+            :alt="footerData.certificate.alternativeText"
         >
     </div>
 

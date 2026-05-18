@@ -4,21 +4,21 @@
     import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     import { getImageUrl } from '@/utils/url';
 
-    async function getTeam() 
+    async function getTeamData() 
     {
         const res = await api.get(`/equipe?populate=*`);
         return res.data.data
     }
 
-    const team = ref();
+    const teamData = ref();
     onMounted(async () => {
-        team.value = await getTeam();
+        teamData.value = await getTeamData();
     });
     
 </script>
 
 <template>
-<div v-if="team" id="team" class="team">
+<div v-if="teamData" id="team" class="team">
 
     <div class="background-logo">
         <img src="/graphic-elements/background_logo.svg" alt="">
@@ -29,23 +29,23 @@
         <img src="/graphic-elements/5_losanges.svg" alt="" class="top-icon">
 
         <div class="title-before"></div>
-        <h2 class="title-text">{{ team.title }}</h2>
+        <h2 class="title-text">{{ teamData.title }}</h2>
         <div class="title-after"></div>
 
         <p class="quote">
-            {{ team.quote }}
+            {{ teamData.quote }}
         </p>
     </div>
 
 
     <div class="cover">
-        <img :src="getImageUrl(team.cover_image.url)" alt="">
+        <img :src="getImageUrl(teamData.cover_image.url)" alt="">
     </div>
 
     <div class="content container grid-container">
         <div class="content__text">
             <StrapiBlocks
-                :content="team.text"
+                :content="teamData.text"
             />        
         </div>
         <div class="content__images">
@@ -55,7 +55,7 @@
                 <div class="background-shapes__shape"></div>
             </div>
             <div class="images">
-                <div v-for="(image) in team.secondary_images" class="image-container">
+                <div v-for="(image) in teamData.secondary_images" class="image-container">
                     <img :src="getImageUrl(image.url)" alt="image.alternativeText">
                 </div>
             </div>

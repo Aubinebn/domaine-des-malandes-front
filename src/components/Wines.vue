@@ -27,27 +27,27 @@
         }
     );
 
-    async function getWines() 
+    async function getWinesData() 
     {
         const res = await api.get(`/vin?${params}`);
         return res.data.data
     }
 
-    const wines = ref();
+    const winesData = ref();
 
     onMounted(async () => {
-        wines.value = await getWines();
+        winesData.value = await getWinesData();
     })    
 
 </script>
 
 <template>
-    <div v-if="wines"
+    <div v-if="winesData"
         id="wines"
         class="wines"
     >
-        <img :src="getImageUrl(wines.cover.url)" 
-            :alt="wines.cover.alternativesText"
+        <img :src="getImageUrl(winesData.cover.url)" 
+            :alt="winesData.cover.alternativesText"
             class="cover"
         >
 
@@ -62,31 +62,31 @@
                     <div class="separator__line"></div>
                 </div>
     
-                <h2 class="content__title">{{ wines.title }}</h2>
+                <h2 class="content__title">{{ winesData.title }}</h2>
     
                 <p class="content__description">
-                    {{ wines.description }}
+                    {{ winesData.description }}
                 </p>
             </div>
 
             <div class="images-left">
-                <img :src="getImageUrl(wines.image_left_top.formats.small.url)" 
-                    :alt="wines.image_left_top.alternativesText"
+                <img :src="getImageUrl(winesData.image_left_top.formats.small.url)" 
+                    :alt="winesData.image_left_top.alternativesText"
                     class="images-left__image-top image-losange"
                 >
-                <img :src="getImageUrl(wines.image_left_bottom.formats.small.url)" 
-                    :alt="wines.image_left_bottom.alternativesText"
+                <img :src="getImageUrl(winesData.image_left_bottom.formats.small.url)" 
+                    :alt="winesData.image_left_bottom.alternativesText"
                     class="images-left__image-bottom image-losange"
                 >
             </div>
             
             <div class="images-right">
-                <img :src="getImageUrl(wines.image_right_top.formats.small.url)" 
-                    :alt="wines.image_right_top.alternativesText"
+                <img :src="getImageUrl(winesData.image_right_top.formats.small.url)" 
+                    :alt="winesData.image_right_top.alternativesText"
                     class="images-right__image-top image-losange"
                 >
-                <img :src="getImageUrl(wines.image_right_bottom.formats.small.url)" 
-                    :alt="wines.image_right_bottom.alternativesText"
+                <img :src="getImageUrl(winesData.image_right_bottom.formats.small.url)" 
+                    :alt="winesData.image_right_bottom.alternativesText"
                     class="images-right__image-bottom image-losange"
                 >
             </div>
@@ -95,7 +95,7 @@
 
         <div class="wine-carousel container">
             <WinesCarousel
-                :wine-slides="wines.slides"
+                :wine-slides="winesData.slides"
             />
         </div>
 

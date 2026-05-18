@@ -13,27 +13,27 @@ type Location = {
     lng: number
 }
 
-const data = ref();
+const mapData = ref();
 const locations = ref<Location[]>([])
 const activeLocation = ref<Location | null>(null)
 
 let map: L.Map;
 
-async function getData() {
+async function getMapData() {
     const res = await api.get(`/carte?populate=*`);
     return res.data.data
 }
 
 onMounted(async () => {
 
-    data.value = await getData();
+    mapData.value = await getMapData();
 
-    if (!data.value || data.value.locations.length === 0) {
+    if (!mapData.value || mapData.value.locations.length === 0) {
         console.warn('Pas de données à afficher sur la carte')
         return
     }
 
-    locations.value = data.value.locations.map((item: any) => ({
+    locations.value = mapData.value.locations.map((item: any) => ({
         id: item.id,
         name: item.name,
         description: item.description,
@@ -147,23 +147,23 @@ function initMap() {
         </div>
     </div>
 
-    <div v-if="data" class="content grid-container container">
+    <div v-if="mapData" class="content grid-container container">
         <div class="content__left">
             <h2 class="content__title title">
                 <img class="title__icon"
                     src="/graphic-elements/vertical_line_losange_red.svg"
                 >
-                {{ data.title }}
+                {{ mapData.title }}
             </h2>
             <p class="content__text">
                 <StrapiBlocks
-                    :content="data.text"
+                    :content="mapData.text"
                     class="paragraph"
                 />
             </p>
         </div>
         <p class="content__right content__quote">
-            {{ data.quote }}
+            {{ mapData.quote }}
         </p>
     </div>
 </template>

@@ -4,27 +4,27 @@
     import { getImageUrl } from '@/utils/url';
     import { StrapiBlocks, type BlocksContent } from 'vue-strapi-blocks-renderer'
 
-    const presentation = ref();
-
-    async function getPresentation() 
+    async function getPresentationData() 
     {
         const res = await api.get('/presentation?populate=*');
         return res.data.data
     }
 
+    const presentationData = ref();
+    
     onMounted(async () => {
-        presentation.value = await getPresentation();
+        presentationData.value = await getPresentationData();
     })
 
 </script>
 
 <template>
-    <div v-if="presentation"
+    <div v-if="presentationData"
         id="presentation"
         class="container grid-container"
     >
-        <img :src="getImageUrl(presentation.image.url)"
-            :alt="presentation.image.alternativeText"
+        <img :src="getImageUrl(presentationData.image.url)"
+            :alt="presentationData.image.alternativeText"
             class="image"
         />
 
@@ -35,21 +35,21 @@
                 <img class="arrow__end" src="/graphic-elements/losange_red.svg">
             </div>
 
-            <img :src="getImageUrl(presentation.logo.url)"
-                :alt="presentation.logo.alternativeText"
+            <img :src="getImageUrl(presentationData.logo.url)"
+                :alt="presentationData.logo.alternativeText"
                 class="content__logo"
             />
             <h2 class="content__title">
-                {{ presentation.title }}
+                {{ presentationData.title }}
             </h2>
 
             <div class="content__baseline">
-                {{ presentation.baseline }}
+                {{ presentationData.baseline }}
             </div>
 
             <div class="content__paragraph">
                 <StrapiBlocks
-                    :content="presentation.content"
+                    :content="presentationData.content"
                     class="paragraph"
                 />
             </div>
