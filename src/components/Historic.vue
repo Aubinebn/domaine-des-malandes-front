@@ -34,6 +34,7 @@
 
 <template>
     <div v-if="historic"
+        id="historic"
         class="historic"
     >
         <div class="separator">

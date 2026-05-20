@@ -19,7 +19,7 @@
 </script>
 
 <template>
-<div v-if="knowHow" class="know-how">
+<div v-if="knowHow" id="know-how" class="know-how">
 
     <div class="separator">
         <div class="separator__line"></div>

@@ -43,6 +43,7 @@
 
 <template>
     <div v-if="wines"
+        id="wines"
         class="wines"
     >
         <img :src="getImageUrl(wines.cover.url)" 

@@ -20,7 +20,8 @@
 
 <template>
     <div v-if="presentation"
-        class="presentation container grid-container"
+        id="presentation"
+        class="container grid-container"
     >
         <img :src="getImageUrl(presentation.image.url)"
             :alt="presentation.image.alternativeText"
@@ -62,8 +63,6 @@
 </template>
         
 <style scoped lang="scss">
-
-
     .image {
         grid-column: 2 / span 4;
         width: 100%;

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    import Menu from '@/components/Menu.vue';
     import HeroBanner from '@/components/HeroBanner.vue';
     import Presentation from '@/components/Presentation.vue';
     import Historic from '@/components/Historic.vue';
@@ -10,6 +11,7 @@
 </script>
 
 <template>
+    <Menu/>
     <HeroBanner/>
     <Presentation/>
     <Historic/>

@@ -18,7 +18,7 @@
 </script>
 
 <template>
-<div v-if="team" class="team">
+<div v-if="team" id="team" class="team">
 
     <div class="background-logo">
         <img src="/graphic-elements/background_logo.svg" alt="">
