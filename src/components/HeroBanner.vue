@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick } from 'vue';
     import api from '@/services/api';
     import { getImageUrl } from '@/utils/url';
 
@@ -14,6 +14,9 @@
     onMounted(async () => {
         heroBannerData.value = await getHeroBannerData();
 
+        await nextTick();
+
+        ScrollSmoother.get()?.effects('[data-speed]');
     })
 
 </script>
@@ -26,6 +29,7 @@
         <img :src="getImageUrl(heroBannerData.logo.url)"
             :alt="heroBannerData.logo.alternativeText"
             class="logo"
+            data-speed="1.2"
         />
     </div>
 

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick} from 'vue';
     import api from '@/services/api';
     import { getImageUrl } from '@/utils/url';
-    import { StrapiBlocks, type BlocksContent } from 'vue-strapi-blocks-renderer'
+    import { StrapiBlocks } from 'vue-strapi-blocks-renderer'
+    import gsap from 'gsap';
 
     async function getPresentationData() 
     {
@@ -13,7 +14,24 @@
     const presentationData = ref();
     
     onMounted(async () => {
+
         presentationData.value = await getPresentationData();
+
+        await nextTick();
+
+        const image = document.querySelector('.content__logo');
+
+        gsap.from(image, {
+            opacity: 0, filter: "blur(2px)",
+            duration: 1,
+            ease: "quad.easeInOut",
+            scrollTrigger: {
+                trigger: image,
+                start: 'top center',
+                toggleActions: "play none none reverse",
+                scrub: true,
+            },
+        })
     })
 
 </script>

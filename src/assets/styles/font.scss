@@ -63,6 +63,14 @@ a {
     text-decoration: none;
 }
 
+.line,
+.char,
+.word {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+}
+
 .leaflet-control-container *{
     font-size: 12px!important;
 }

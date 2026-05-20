@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { onMounted, ref, h } from 'vue'
+import { onMounted, ref, nextTick } from 'vue'
 import api from '@/services/api'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { StrapiBlocks } from 'vue-strapi-blocks-renderer'
+import gsap from 'gsap'
+import SplitText from 'gsap/SplitText'
+
+gsap.registerPlugin(SplitText)
 
 type Location = {
     id: number
@@ -43,7 +47,11 @@ onMounted(async () => {
 
     activeLocation.value = locations.value[0] ?? null
 
-    initMap()
+    initMap();
+
+    await nextTick();
+
+    initGsapAnimations();
 })
 
 function initMap() {
@@ -127,6 +135,36 @@ function initMap() {
             padding: [50, 50],
             duration: .5
         })
+    })
+}
+
+function initGsapAnimations()
+{
+    const quote = document.querySelector('.content__quote');
+
+    const split = new SplitText(quote, {
+        type: 'lines,chars',
+        linesClass: 'line',
+        charsClass: 'char',
+        wordsClass: 'word',
+    })
+
+    split.lines.forEach((line, index) => {
+        gsap.from(line, {
+            y: 20,
+            stagger: 1,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: index * 0.35,
+            scrollTrigger: {
+                trigger: line,
+                toggleActions: "play none none reverse",
+                start: 'top 70%',
+                end: 'top 20%',
+                scrub: true,
+            },
+        });
     })
 }
 </script>
