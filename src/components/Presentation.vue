@@ -39,7 +39,7 @@
 <template>
     <div v-if="presentationData"
         id="presentation"
-        class="container grid-container"
+        class="container grid-container menu-section"
     >
         <img :src="getImageUrl(presentationData.image.url)"
             :alt="presentationData.image.alternativeText"

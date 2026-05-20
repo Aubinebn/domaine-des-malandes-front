@@ -171,7 +171,7 @@ function initGsapAnimations()
 
 <template>
     <div class="map-container">
-        <div id="map" class="map"></div>
+        <div id="map" class="map menu-section"></div>
         
         <div class="info-container container grid-container">
             <div class="info">

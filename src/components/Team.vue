@@ -23,7 +23,7 @@
 </script>
 
 <template>
-<div v-if="teamData" id="team" class="team">
+<div v-if="teamData" id="team" class="team menu-section">
 
     <div class="background-logo">
         <img src="/graphic-elements/background_logo.svg"  data-speed="0.8"

@@ -49,7 +49,7 @@
 <template>
     <div v-if="winesData"
         id="wines"
-        class="wines"
+        class="wines menu-section"
     >
         <div class="cover">
             <img :src="getImageUrl(winesData.cover.url)" 

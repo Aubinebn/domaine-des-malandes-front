@@ -51,7 +51,7 @@
 <template>
     <div v-if="historicData"
         id="historic"
-        class="historic"
+        class="historic menu-section"
     >
         <div class="separator">
             <div class="separator__line"></div>

@@ -41,7 +41,7 @@
 </script>
 
 <template>
-<div v-if="knowHowData" id="know-how" class="know-how">
+<div v-if="knowHowData" id="know-how" class="know-how menu-section">
 
     <div class="separator">
         <div class="separator__line"></div>
