@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick } from 'vue';
     import api from '@/services/api';
     import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     import { getImageUrl } from '@/utils/url';
+    import gsap from 'gsap';
 
     async function getKnowHowData() 
     {
@@ -14,6 +15,27 @@
     
     onMounted(async () => {
         knowHowData.value = await getKnowHowData();
+
+        await nextTick();
+
+        const images = document.querySelectorAll('.secondary-images__image');
+        
+        images.forEach((image, index) => {
+            gsap.from(image, {
+                scrollTrigger: {
+                    trigger: image,
+                    start: 'top ' + (index*10 + 60) + '%',
+                    end: 'top ' + (index*10 + 20) + '%',
+                    toggleActions: 'play none none reverse',
+                    scrub: true,
+                },
+                opacity: 0,
+                y: 50,
+                x: 50,
+            });
+        });
+        
+        gsap.from
     });
     
 </script>

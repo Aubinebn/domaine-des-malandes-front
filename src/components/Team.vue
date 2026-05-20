@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick } from 'vue';
     import api from '@/services/api';
     import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     import { getImageUrl } from '@/utils/url';
+    import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
     async function getTeamData() 
     {
@@ -13,6 +14,10 @@
     const teamData = ref();
     onMounted(async () => {
         teamData.value = await getTeamData();
+
+        await nextTick();
+
+        ScrollSmoother.get()?.effects('[data-speed]');
     });
     
 </script>
@@ -21,7 +26,7 @@
 <div v-if="teamData" id="team" class="team">
 
     <div class="background-logo">
-        <img src="/graphic-elements/background_logo.svg" alt="">
+        <img src="/graphic-elements/background_logo.svg"  data-speed="0.8"
     </div>
 
     <div class="container grid-container">
@@ -50,12 +55,12 @@
         </div>
         <div class="content__images">
             <div class="background-shapes">
-                <div class="background-shapes__shape"></div>
-                <div class="background-shapes__shape"></div>
-                <div class="background-shapes__shape"></div>
+                <div class="background-shapes__shape" data-speed="0.9"></div>
+                <div class="background-shapes__shape" data-speed="0.9"></div>
+                <div class="background-shapes__shape" data-speed="0.9"></div>
             </div>
             <div class="images">
-                <div v-for="(image) in teamData.secondary_images" class="image-container">
+                <div v-for="(image) in teamData.secondary_images" class="image-container" data-speed="1.1">
                     <img :src="getImageUrl(image.url)" alt="image.alternativeText">
                 </div>
             </div>

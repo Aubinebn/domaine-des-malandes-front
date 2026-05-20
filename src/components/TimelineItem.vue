@@ -2,7 +2,6 @@
     import { ref, onMounted } from 'vue';
     import { getImageUrl } from '@/utils/url';
     import gsap from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     const props = defineProps(['data', 'order', 'isLast']);
     
@@ -11,8 +10,6 @@
     if (props.data.date_end)
         props.data.date_end = new Date(props.data.date_end).getFullYear();
         
-    gsap.registerPlugin(ScrollTrigger);
-
     const timelineItem = ref();
     const offset = props.order === 'invert' ? -100 : 100;
 
@@ -26,8 +23,9 @@
             ease: "quad.easeIn",
             scrollTrigger: {
                 trigger: timelineItem.value,
-                start: '-10px center',
-                end: '-10px center',
+                start: 'top 80%',
+                end: 'top 40%',
+                scrub: true,
                 toggleActions: "play none none reverse",
             },
         }

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick} from 'vue';
     import qs from 'qs';
     import api from '@/services/api';
     import TimelineItem from '@/components/TimelineItem.vue';
-
+    import gsap from 'gsap'
+    
     const params = qs.stringify(
         {
             populate: {
@@ -28,7 +29,22 @@
 
     onMounted(async () => {
         historicData.value = await getHistoricData();
-    })
+
+        await nextTick();
+
+        const quote = document.querySelector('.quote');
+
+        gsap.from(quote, {
+            y: 80, opacity: 0, scale: 0.95,
+            duration: 1,
+            ease: 'quad.easeIn',
+            scrollTrigger: {
+                trigger: quote,
+                toggleActions: "play none none reverse",
+                start: '-100px center',
+            },
+        })
+    });
 
 </script>
 
@@ -60,7 +76,7 @@
                 </div>
             </div>
 
-            <p class="historic__quote">
+            <p class="historic__quote quote">
                 {{ historicData.quote }}
             </p>
         </div>
@@ -103,7 +119,7 @@
     &__quote {
         grid-row: 3;
         grid-column: 5 / span 4;
-        margin-top: 40px;
+        margin-top: 80px;
         text-align: center;
         font-family: "Mrs Eaves OT";
         font-style: italic;

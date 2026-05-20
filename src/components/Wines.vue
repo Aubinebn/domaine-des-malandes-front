@@ -1,10 +1,11 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, nextTick } from 'vue';
     import qs from 'qs';
     import api from '@/services/api';
     import { getImageUrl } from '@/utils/url';
     import WinesCarousel from '@/components/WinesCarousel.vue';
-
+    import ScrollSmoother from 'gsap/ScrollSmoother'
+    
     const params = qs.stringify(
         {
             populate: {
@@ -37,6 +38,10 @@
 
     onMounted(async () => {
         winesData.value = await getWinesData();
+
+        await nextTick();
+
+        ScrollSmoother.get()?.effects('[data-speed]');
     })    
 
 </script>
@@ -46,10 +51,12 @@
         id="wines"
         class="wines"
     >
-        <img :src="getImageUrl(winesData.cover.url)" 
-            :alt="winesData.cover.alternativesText"
-            class="cover"
-        >
+        <div class="cover">
+            <img :src="getImageUrl(winesData.cover.url)" 
+                :alt="winesData.cover.alternativesText"
+                data-speed="0.8"
+            >
+        </div>
 
         <div class="container grid-container">
 
@@ -69,23 +76,23 @@
                 </p>
             </div>
 
-            <div class="images-left">
-                <img :src="getImageUrl(winesData.image_left_top.formats.small.url)" 
+            <div class="images-left" data-speed="1.2">
+                <img :src="getImageUrl(winesData.image_left_top.formats.medium.url)" 
                     :alt="winesData.image_left_top.alternativesText"
                     class="images-left__image-top image-losange"
                 >
-                <img :src="getImageUrl(winesData.image_left_bottom.formats.small.url)" 
+                <img :src="getImageUrl(winesData.image_left_bottom.formats.medium.url)" 
                     :alt="winesData.image_left_bottom.alternativesText"
                     class="images-left__image-bottom image-losange"
                 >
             </div>
             
-            <div class="images-right">
-                <img :src="getImageUrl(winesData.image_right_top.formats.small.url)" 
+            <div class="images-right" data-speed="1.2">
+                <img :src="getImageUrl(winesData.image_right_top.formats.medium.url)" 
                     :alt="winesData.image_right_top.alternativesText"
                     class="images-right__image-top image-losange"
                 >
-                <img :src="getImageUrl(winesData.image_right_bottom.formats.small.url)" 
+                <img :src="getImageUrl(winesData.image_right_bottom.formats.medium.url)" 
                     :alt="winesData.image_right_bottom.alternativesText"
                     class="images-right__image-bottom image-losange"
                 >
@@ -106,9 +113,15 @@
 
 .cover {
     width: 100%;
-    height: auto;
-    max-height: 60vh;
-    object-fit: cover;
+    height: 60vh;
+    overflow: hidden;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        object-fit: cover;
+    }
 }
 
 .content {
