@@ -7,6 +7,7 @@
     import Map from '@/components/Map.vue';
     import KnowHow from '@/components/KnowHow.vue';
     import Team from '@/components/Team.vue';
+    import Gallery from '@/components/Gallery.vue';
     import Footer from '@/components/Footer.vue';
 
     import {onMounted } from 'vue';
@@ -38,6 +39,7 @@
             <Map/>
             <KnowHow/>
             <Team/>
+            <Gallery/>
             <Footer/>
         </div>
     </div>  

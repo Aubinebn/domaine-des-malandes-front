@@ -13,6 +13,7 @@
     const mapTitle = ref();
     const knowHowTitle = ref();
     const teamTitle = ref();
+    const galleryTitle = ref();
     let sections: NodeListOf<Element> | null = null;
 
     const activeSection = ref('');
@@ -56,6 +57,7 @@
         mapTitle.value = await getTitle('carte');
         knowHowTitle.value = await getTitle('savoir-faire');
         teamTitle.value = await getTitle('equipe');
+        galleryTitle.value = await getTitle('galerie');
 
         const menu = document.querySelector('.menu');
         const menuSeparator = document.querySelectorAll('.menu-separator');
@@ -159,6 +161,16 @@
                 :class="{ 'active': activeSection === 'team' }"
             >
                 {{ teamTitle }}
+                <div class="underline"></div>
+            </a>            
+            <div class="menu-separator"></div>
+
+            <a href="#gallery"
+                @click="scrollToSection('gallery', $event)"
+                class="menu-item"
+                :class="{ 'active': activeSection === 'gallery' }"
+            >
+                {{ galleryTitle }}
                 <div class="underline"></div>
             </a>
         </div>
