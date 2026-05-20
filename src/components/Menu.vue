@@ -13,9 +13,24 @@
     const mapTitle = ref();
     const knowHowTitle = ref();
     const teamTitle = ref();
-
+    let sections: NodeListOf<Element> | null = null;
 
     const activeSection = ref('');
+
+    const handleScroll = () => {
+        let currentSection = '';
+
+        sections?.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top <= 250 && rect.bottom >= 0) {
+                currentSection = section.id;
+            }
+        });
+
+        activeSection.value = currentSection;
+    }
+
     function scrollToSection(sectionId: string, event: MouseEvent) {
         event.preventDefault();
 
@@ -70,23 +85,10 @@
             })
         })
 
-        const sections = document.querySelectorAll('.menu-section');
-
-        const handleScroll = () => {
-            let currentSection = '';
-
-            sections.forEach((section) => {
-                const rect = section.getBoundingClientRect();
-
-                if (rect.top <= 250 && rect.bottom >= 0) {
-                    currentSection = section.id;
-                }
-            });
-
-            activeSection.value = currentSection;
-        }
+        sections = document.querySelectorAll('.menu-section');
 
         window.addEventListener('scroll', handleScroll);
+        ScrollTrigger.addEventListener('scrollEnd', handleScroll);
         
         handleScroll();
     })
