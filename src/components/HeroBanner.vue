@@ -2,7 +2,7 @@
     import { ref, onMounted, nextTick } from 'vue';
     import api from '@/services/api';
     import { getImageUrl } from '@/utils/url';
-
+    import ScrollSmoother from 'gsap/ScrollSmoother';
 
     async function getHeroBannerData() 
     {

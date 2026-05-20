@@ -67,17 +67,7 @@ const handleSlideChange = (swiper: any) => {
 				</div>
 			</transition>
 		</div>
-
 	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </template>
 
 <style scoped lang="scss">
