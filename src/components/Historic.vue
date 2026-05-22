@@ -70,7 +70,7 @@
                 <div v-for="(item, index) in historicData.timeline" :key="item.id">
                     <TimelineItem 
                         :data="item" 
-                        :order="index % 2 == 0 ? 'normal' : 'invert'"
+                        :order="(index as number) % 2 == 0 ? 'normal' : 'invert'"
                         :isLast="index === historicData.timeline.length - 1"
                     />
                 </div>

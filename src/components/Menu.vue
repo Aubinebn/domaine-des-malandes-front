@@ -44,7 +44,7 @@
         window.history.replaceState(null, '', `#${sectionId}`);
     }
 
-    async function getTitle(entity) 
+    async function getTitle(entity: string) 
     {
         const res = await api.get(`/${entity}?fields[0]=title`);
         return res.data.data.title;

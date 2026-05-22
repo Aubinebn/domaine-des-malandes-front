@@ -4,7 +4,9 @@ import { getImageUrl } from '@/utils/url';
 
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/vue';
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
