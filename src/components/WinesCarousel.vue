@@ -44,7 +44,7 @@ const handleSlideChange = (swiper: any) => {
 				<SwiperSlide v-for="(slide, index) in wineSlides" :key="index">
 					<img src="/graphic-elements/vertical_dots.svg" alt=""
 						class="graphic-elements graphic-elements--left">
-					<img :src="getImageUrl(slide.image.url)" :alt="slide.image.alternativeText" class="bottle">
+					<img :src="getImageUrl(slide.image.formats.small.url)" :alt="slide.image.alternativeText" class="bottle">
 					<img src="/graphic-elements/vertical_dots.svg" alt=""
 						class="graphic-elements graphic-elements--right">
 				</SwiperSlide>
@@ -64,7 +64,7 @@ const handleSlideChange = (swiper: any) => {
 
 			<transition name="text-fade" mode="out-in">
 				<div class="text__content" :key="activeIndex">
-					<h2>{{ wineSlides[activeIndex].name }}</h2>
+					<h3>{{ wineSlides[activeIndex].name }}</h3>
 					<p>{{ wineSlides[activeIndex].description }}</p>
 				</div>
 			</transition>
@@ -92,7 +92,7 @@ const handleSlideChange = (swiper: any) => {
 }
 
 .bottle {
-	height: 400px;
+	height: 500px;
 	transform: scale(0.75);
 	transition: transform 1s ease-in-out !important;
 	object-fit: contain;

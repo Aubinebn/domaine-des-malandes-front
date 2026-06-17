@@ -5,6 +5,7 @@
     import { getImageUrl } from '@/utils/url';
     import WinesCarousel from '@/components/WinesCarousel.vue';
     import ScrollSmoother from 'gsap/ScrollSmoother'
+import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     
     const params = qs.stringify(
         {
@@ -49,6 +50,7 @@
 <template>
     <div v-if="winesData"
         id="wines"
+        data-offset-top="60"
         class="wines menu-section"
     >
         <div class="cover">
@@ -72,7 +74,9 @@
                 <h2 class="content__title">{{ winesData.title }}</h2>
     
                 <p class="content__description">
-                    {{ winesData.description }}
+                    <StrapiBlocks
+                        :content="winesData.description"
+                    />        
                 </p>
             </div>
 
@@ -200,6 +204,7 @@
 
 .wine-carousel {
     margin-top: 60px;
+    margin-bottom: 120px;
 }
 
 </style>

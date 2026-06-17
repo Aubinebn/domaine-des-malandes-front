@@ -17,12 +17,12 @@
     gsap.registerPlugin(ScrollSmoother);
 
     onMounted(() => {
-
         ScrollSmoother.create({
             wrapper: '#smooth-wrapper',
             content: '#smooth-content',
             smooth: 2,
             effects: true,
+            ignoreMobileResize: true,
         });
     });
 

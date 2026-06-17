@@ -68,7 +68,7 @@
     </div>
 
     <div class="main-image">
-        <img :src="getImageUrl(knowHowData.main_image.formats.large.url)" 
+        <img :src="getImageUrl(knowHowData.main_image.url)" 
             :alt="knowHowData.main_image.alternativeText"
             class="main-image__image"
         >
@@ -81,6 +81,7 @@
 <style scoped lang="scss">
 .know-how {
     position: relative;
+    padding-top: 80px;
 }
 
 .separator {

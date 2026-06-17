@@ -26,7 +26,7 @@
 <div v-if="teamData" id="team" class="team menu-section">
 
     <div class="background-logo">
-        <img src="/graphic-elements/background_logo.svg"  data-speed="0.8"
+        <img src="/graphic-elements/background_logo.svg"  data-speed="0.8">
     </div>
 
     <div class="container grid-container">

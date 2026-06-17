@@ -24,7 +24,13 @@
         sections?.forEach((section) => {
             const rect = section.getBoundingClientRect();
 
-            if (rect.top <= 250 && rect.bottom >= 0) {
+            //-- récupère la propriété data-offset-top de la section
+            let offsetTop = section.getAttribute('data-offset-top') ?? 0;
+            offsetTop = window.innerHeight * offsetTop / 100;
+            
+            if (rect.top + offsetTop <= window.innerHeight * 0.7 && 
+                rect.bottom >= window.innerHeight * 0.3) 
+            {
                 currentSection = section.id;
             }
         });
@@ -32,13 +38,16 @@
         activeSection.value = currentSection;
     }
 
-    function scrollToSection(sectionId: string, event: MouseEvent) {
+    function scrollToSection(sectionId: string, event: MouseEvent) 
+    {
         event.preventDefault();
 
         const smoother = ScrollSmoother.get();
 
-        if (smoother) {
-            smoother.scrollTo(`#${sectionId}`, true);
+        if (smoother) 
+        {
+            const target = smoother.offset(`#${sectionId}`, "top 100px");
+            smoother.scrollTo(target, true);
         }
 
         window.history.replaceState(null, '', `#${sectionId}`);

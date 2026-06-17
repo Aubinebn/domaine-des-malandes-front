@@ -73,14 +73,14 @@ function initMap() {
 
     const defaultIcon = L.icon({
         iconUrl: '/graphic-elements/map_marker.svg',
-        iconSize: [28, 28],
-        iconAnchor: [14, 28]
+        iconSize: [42, 42],
+        iconAnchor: [21, 42]
     })
 
     const activeIcon = L.icon({
         iconUrl: '/graphic-elements/map_marker_active.svg',
-        iconSize: [28, 28],
-        iconAnchor: [14, 28]
+        iconSize: [42, 42],
+        iconAnchor: [21, 42]
     })
     
     const bounds = L.latLngBounds([])
@@ -171,7 +171,7 @@ function initGsapAnimations()
 
 <template>
     <div class="map-container">
-        <div id="map" class="map menu-section"></div>
+        <div id="map" class="map menu-section" data-offset-top="20"></div>
         
         <div class="info-container container grid-container">
             <div class="info">
@@ -262,11 +262,8 @@ function initGsapAnimations()
     }
 
     &__right {
-        grid-column: 8 / span 4;
+        grid-column: 8 / span 5;
         align-self: center;
-        font-family: Mrs Eaves;
-        font-size: 20px;
-        font-style: italic;
 
         &::after {
             content: "";
@@ -280,7 +277,7 @@ function initGsapAnimations()
 
     &__quote {
         font-family: "Mrs Eaves OT";
-        font-size: 32px;
+        font-size: 28px;
         line-height: 1.1;
         font-style: italic;
     }
