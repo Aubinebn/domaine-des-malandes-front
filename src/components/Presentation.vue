@@ -41,6 +41,10 @@
         id="presentation"
         class="container grid-container menu-section"
     >
+        <div class="background-logo" data-speed="1.1">
+            <img src="/graphic-elements/background_logo.svg">
+        </div>
+
         <img :src="getImageUrl(presentationData.image.url)"
             :alt="presentationData.image.alternativeText"
             class="image"
@@ -134,6 +138,23 @@
 
         &__end {
             margin-top: -3px;
+        }
+    }
+
+    .background-logo {
+        position:absolute;
+        top: -30px;
+        left: -300px;
+        width: 600px;
+        overflow: hidden;
+        z-index: -1;
+        opacity: 0.4;
+        rotate: 124deg;
+
+        & img {
+            width: 100%;
+            height:auto;
+            object-fit: cover;
         }
     }
 </style>

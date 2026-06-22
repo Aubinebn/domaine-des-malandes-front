@@ -56,11 +56,15 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
         <div class="cover">
             <img :src="getImageUrl(winesData.cover.url)" 
                 :alt="winesData.cover.alternativesText"
-                data-speed="0.8"
+                data-speed="0.9"
             >
         </div>
 
         <div class="container grid-container">
+
+            <div class="background-logo" data-speed="0.8">
+                <img src="/graphic-elements/background_logo.svg">
+            </div>
 
             <div class="content">
                 <div class="content__separator separator">
@@ -207,4 +211,20 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     margin-bottom: 120px;
 }
 
+.background-logo {
+    position:absolute;
+    top: -30px;
+    left: -250px;
+    width: 600px;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.3;
+    rotate: 136deg;
+
+    & img {
+        width: 100%;
+        height:auto;
+        object-fit: cover;
+    }
+}
 </style>

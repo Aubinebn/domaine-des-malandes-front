@@ -59,6 +59,11 @@
         </div>
 
         <div class="container grid-container">
+
+            <div class="background-logo background-logo--top" data-speed="1.1">
+                <img src="/graphic-elements/background_logo.svg">
+            </div>
+
             <div class="historic__title title">
                 <img class="title__icon"
                     src="/graphic-elements/square_losange_red.svg"
@@ -79,9 +84,12 @@
             <p class="historic__quote quote">
                 {{ historicData.quote }}
             </p>
+            
+            <div class="background-logo background-logo--bottom">
+                <img src="/graphic-elements/logo-background-cut.png">
+            </div>
         </div>
     </div>
-
 </template>
         
 <style scoped lang="scss">
@@ -137,6 +145,32 @@
         line-height: 0.8;
         display: inline-block;
         margin-right: 20px;
+    }
+}
+
+.background-logo {
+    position:absolute;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.4;
+
+    & img {
+        width: 100%;
+        height:auto;
+        object-fit: cover;
+    }
+
+    &--top {
+        top: -100px;
+        right: -400px;
+        width: 650px;
+        rotate: 98deg;
+    }
+
+    &--bottom {
+        bottom: -100px;
+        left: -100px;
+        right: -100px;
     }
 }
 </style>
