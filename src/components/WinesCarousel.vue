@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { getImageUrl } from '@/utils/url';
 
 // Swiper
@@ -15,6 +15,15 @@ const props = defineProps(['wineSlides']);
 const activeIndex = ref(0);
 
 const showArrow = ref(true)
+
+const swiperBreakpoints = {
+	768: {
+		slidesPerView: 2,
+	},
+	1200: {
+		slidesPerView: 3,
+	},
+}
 
 const handleSlideChange = (swiper: any) => {
 	activeIndex.value = swiper.realIndex
@@ -36,7 +45,8 @@ const handleSlideChange = (swiper: any) => {
 				<img src="/graphic-elements/arrow_left.svg" alt="">
 			</div>
 
-			<Swiper :modules="[Navigation]" :centeredSlides=true :grabCursor="true" :slidesPerView=3 :speed="1000"
+			<Swiper :modules="[Navigation]" :centeredSlides="true" :grabCursor="true" :slidesPerView="1" :speed="1000"
+				:breakpoints="swiperBreakpoints"
 				:loop="true" :navigation="{
 					nextEl: '.btn-slider--next',
 					prevEl: '.btn-slider--prev',
@@ -76,8 +86,13 @@ const handleSlideChange = (swiper: any) => {
 * {
 	user-select: none;
 }
+
+.grid-container {
+	align-items: center;
+}
+
 .line-separator {
-	grid-column: 1 / none;
+	grid-column: 1 / -1;
 	width: 100%;
 	height: 1px;
 	background-color: $bg-color-light-red;
@@ -85,7 +100,7 @@ const handleSlideChange = (swiper: any) => {
 
 .slider-wrapper {
 	grid-column: 2 / 12;
-	margin: -60px 0;
+	margin: -60px -40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -93,6 +108,7 @@ const handleSlideChange = (swiper: any) => {
 
 .bottle {
 	height: 500px;
+	max-height: 500px;
 	transform: scale(0.75);
 	transition: transform 1s ease-in-out !important;
 	object-fit: contain;
@@ -153,6 +169,12 @@ const handleSlideChange = (swiper: any) => {
 .btn-slider {
 	cursor: pointer;
 }
+
+.btn-slider img {
+	width: 42px;
+	height: auto;
+}
+
 .text {
 	grid-column: 7 / 12;
 	display: flex;
@@ -173,6 +195,10 @@ const handleSlideChange = (swiper: any) => {
 	&__arrow:not(.is-hidden) {
 		transition: opacity 0.3s;
 	}
+
+	&__content {
+		max-width: 420px;
+	}
 }
 
 .text-fade-enter-active,
@@ -189,4 +215,69 @@ const handleSlideChange = (swiper: any) => {
 	opacity: 0;
 	transform: translateX(-20px);
 }
+
+@media (max-width: 1200px) {
+	.slider-wrapper {
+		grid-column: 1 / -1;
+	}
+
+	.text {
+		grid-column: 4 / 10;
+		justify-content: center;
+		margin-left: 0;
+		text-align: center;
+	}
+
+	.text__arrow {
+		display: none;
+	}
+}
+
+@media (max-width: 992px) {
+
+	.slider-wrapper {
+		margin: -60px 0;
+	}
+
+	.bottle {
+		height: 430px;
+		max-height: 430px;
+	}
+
+	.text {
+		grid-column: 3 / 11;
+	}
+}
+
+@media (max-width: 768px) {
+	.bottle {
+		height: 360px;
+		max-height: 360px;
+	}
+
+	.text {
+		grid-column: 1 / -1;
+	}
+
+	.text__content {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 576px) {
+	.slider-wrapper {
+		margin: -48px 0;
+	}
+
+	.bottle {
+		height: 300px;
+		max-height: 300px;
+	}
+
+	.btn-slider img {
+		width: 32px;
+	}
+}
+
+
 </style>

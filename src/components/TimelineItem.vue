@@ -122,7 +122,7 @@
             height: 100%;
             background-color: $bg-color-red;
             margin: -8px auto 0;
-            transform: translateX(-3px);
+            transform: translateX(-50%px);
         }
     }
 
@@ -134,7 +134,6 @@
         display: flex;
         align-items: center;
         font-family: "Mrs Eaves OT";
-        font-size: 22px;
         font-style: italic;
         max-width: 400px;
         justify-self: start;
@@ -175,14 +174,144 @@
     }
 }
 
-    .line {
-        position: relative;
-        
-        &__dots {
-            position: absolute;
-            bottom: 0;
-            background-color: #fff;
-            transform: translateX(-42%);
+.line {
+    position: relative;
+    
+    &__dots {
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        transform: translateX(-42%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .timeline-item {
+        padding: 18px 0 52px;
+
+        &__image img {
+            height: 260px;
         }
     }
+
+    .date-container {
+        width: 112px;
+        height: 112px;
+
+        &__date {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        height: auto;
+        padding: 14px 0 36px;
+
+        &__image,
+        &__image--invert,
+        &__date,
+        &__description,
+        &__description--invert {
+            grid-column: 1;
+            grid-row: auto;
+            justify-self: stretch;
+        }
+
+        &__image {
+            justify-content: center;
+            align-items: center;
+
+            &--invert {
+                justify-content: center;
+            }
+
+            img {
+                height: 400px;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+        }
+
+        &__date {
+            margin-top: -67px;
+            z-index: 1;
+            transform: none;
+            justify-self: center;
+        }
+
+        &__description {
+            margin: 0;
+            max-width: none;
+            justify-self: center;
+            text-align: center;
+
+            &--invert {
+                margin: 0;
+                text-align: center;
+                justify-self: center;
+            }
+        }
+    }
+    
+    .line {
+            display: none;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .timeline-item {
+        &__date {
+            margin-top: -58px;
+        }
+
+        &__image {
+            flex-direction: column;
+            align-items: center;
+        }
+
+    }
+
+    .date-container {
+        width: 92px;
+        height: 92px;
+
+        &__date {
+            font-size: 22px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .timeline-item {
+        padding: 12px 0 30px;
+
+        &__image img {
+            height: 300px;
+        }
+
+    }
+
+    .date-container {
+        width: 84px;
+        height: 84px;
+
+        &__date {
+            font-size: 20px;
+        }
+    }
+
+    .line {
+        &__dots {
+            transform: translateX(-50%);
+        }
+    }
+}
+
+
 </style>

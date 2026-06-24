@@ -140,6 +140,7 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
     align-items: center;
     gap: 20px;
     padding: 0 20px;
+    z-index: 1;
 
     &__description {
         max-width: 600px;
@@ -149,6 +150,7 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
 .images-left {
     grid-column: 1 / 4;
     grid-row: 1;
+    justify-self: center;
     margin-bottom: -80px ;
 
     &__image-top {
@@ -166,6 +168,7 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
 .images-right {
     grid-column: 10 / 13;
     grid-row: 1;
+    justify-self: center;
     text-align: right;
     margin-top: -120px ;
 
@@ -227,4 +230,88 @@ import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
         object-fit: cover;
     }
 }
+
+@media (max-width: 1200px) {
+    .content {
+        grid-column: 3 / 11;
+    }
+
+    .images-left,
+    .images-right {
+        width: 150%;
+
+        &__image-bottom {
+            margin-top: 0;
+        }
+    }
+    .images-left {
+        grid-column: 1 / 3;
+    }
+
+    .images-right {
+        grid-column: 11 / 13;
+    }
+
+    .background-logo {
+        left: -180px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .cover {
+        height: 50vh;
+    }
+
+    .content {
+        grid-column: 2 / 12;
+    }
+
+    .images-left,
+    .images-right {
+        display: none;
+    }
+
+    .background-logo {
+        left: -120px;
+        width: 420px;
+        opacity: 0.2;
+    }
+}
+
+@media (max-width: 768px) {
+    .cover {
+        height: 42vh;
+    }
+
+    .content {
+        grid-column: 1 / -1;
+        gap: 16px;
+
+        &__description {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .cover {
+        height: 36vh;
+    }
+
+    .separator {
+        gap: 18px;
+
+        &__icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .background-logo {
+        display: none;
+    }
+}
+
+
 </style>

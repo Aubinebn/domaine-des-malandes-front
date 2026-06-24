@@ -122,7 +122,7 @@ function initMap() {
 
     //-- Ajuste la carte aux points
     map.fitBounds(bounds, {
-            padding: [50, 50] // espace autour (important pour ton UI)
+            padding: [80, 80]
         })
         // .setMaxBounds(bounds.pad(0.5))
 
@@ -238,7 +238,8 @@ function initGsapAnimations()
     bottom: 20px;
     background: $bg-light-beige;
     padding: 18px;
-    width: 300px;
+    width: 100%;
+    max-width: 360px;
     z-index: 200;
 }
 
@@ -294,6 +295,110 @@ function initGsapAnimations()
         width: 15px;
         position: relative;
         bottom: 26px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .map-container {
+        height: 400px;
+    }
+
+    .info {
+        grid-column: 8 / span 5;
+    }
+
+    .content__left {
+        grid-column: 2 / span 5;
+    }
+
+    .content__right {
+        grid-column: 8 / span 5;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .info {
+        grid-column: 7 / span 6;
+        padding: 16px;
+    }
+
+    .content {
+        &__left {
+            grid-column: 1 / span 6;
+        }
+
+        &__right {
+            grid-column: 7 / span 6;
+        }
+
+        &__quote {
+            font-size: 26px;
+        }
+    }
+
+    .title {
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        max-height: 75vh;
+    }
+
+    .info {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+
+    .content {
+        &__left,
+        &__right {
+            grid-column: 1 / -1;
+        }
+
+        &__right {
+            margin-top: 10px;
+
+            &::after{
+                display: none;
+            }
+        }
+
+        &__quote {
+            font-size: 24px;
+        }
+    }
+
+    .title {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .map-container {
+        height: 80vh;
+    }
+
+    .info {
+        padding: 14px;
+    }
+
+    .content {
+        &__quote {
+            font-size: 22px;
+        }
+    }
+
+    .title {
+        gap: 18px;
+
+        &__icon {
+            width: 12px;
+            bottom: 20px;
+        }
     }
 }
 

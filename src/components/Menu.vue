@@ -226,4 +226,24 @@
     background-color: #fff;
 }
 
+@media (max-width: 1200px) {
+    .menu-container {
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-container {
+        gap: 10px;
+        padding: 20px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+}
+
 </style>

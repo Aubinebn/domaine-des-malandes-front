@@ -47,9 +47,13 @@
 }
 
 .hero-banner .logo {
-    max-width: 40%;
-    max-height: 40%;
-    margin-top: 8%;
+    width: min(82vw, 82vh);
+    height: auto;
+    max-width: clamp(40%, calc(95% - 4vw), 82%);
+    max-height: clamp(40%, calc(95% - 4vw), 82%);
+    min-width: clamp(140px, 22vw, 320px);
+    object-fit: contain;
+    margin-top: clamp(8%, calc(18% - 0.6vw), 16%);
 }
 
 </style>

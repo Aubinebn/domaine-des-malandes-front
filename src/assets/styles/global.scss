@@ -1,0 +1,18 @@
+.title-upper-separator {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    
+    &__line {
+        width: 35%;
+        height: 1px;
+        background-color: $bg-color-red;
+    }
+
+    &__end {
+        margin-left: -3px;
+        margin-bottom: -1px;
+        height: 18px;
+        width: auto;
+    }
+}

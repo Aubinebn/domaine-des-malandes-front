@@ -43,9 +43,9 @@
 <template>
 <div v-if="knowHowData" id="know-how" class="know-how menu-section">
 
-    <div class="separator">
-        <div class="separator__line"></div>
-        <img class="separator__end" src="/graphic-elements/losange_red.svg">
+    <div class="title-upper-separator">
+        <div class="title-upper-separator__line"></div>
+        <img class="title-upper-separator__end" src="/graphic-elements/losange_red.svg">
     </div>
 
     <div class="container grid-container content">
@@ -82,23 +82,6 @@
 .know-how {
     position: relative;
     padding-top: 80px;
-}
-
-.separator {
-    display: flex;
-    align-items: center;
-    margin: 12px 0;
-    
-    &__line {
-        width: 35%;
-        height: 1px;
-        background-color: $bg-color-red;
-    }
-
-    &__end {
-        margin-left: -3px;
-        margin-bottom: -1px;
-    }
 }
 
 .content {
@@ -175,6 +158,93 @@
         object-position: center;
         width: 100%;
         height: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .content {
+        &__title,
+        &__text {
+            grid-column: 2 / 6;
+        }
+
+        &__images {
+            grid-column: 1 / 9;
+        }
+    }
+
+    .secondary-images {
+        width: 68%;
+        gap: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .content {
+
+        &__title,
+        &__text,
+        &__images {
+            grid-column: 1 / -1;
+        }
+
+        &__title {
+            margin-bottom: 6px;
+        }
+
+        &__text {
+            max-width: 620px;
+        }
+
+        &__images {
+            display: none;
+        }
+    }
+
+    .main-image {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        max-width: 100%;
+        width: 100%;
+        margin-top: 30px;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .content {
+        &__title {
+            margin-bottom: 4px;
+        }
+
+        &__text {
+            max-width: 100%;
+            margin-bottom: 6px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+
+    .know-how {
+        padding-top: 50px;
+    }
+
+    .content {
+        &__title,
+        &__text {
+            margin-bottom: 0;
+        }
+    }
+
+    .main-image {
+        margin-top: 18px;
+        aspect-ratio: 4 / 3;
     }
 }
 </style>

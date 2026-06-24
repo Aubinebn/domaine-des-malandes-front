@@ -5,5 +5,6 @@ import App from './App.vue'
 import '@/assets/styles/reset.scss'
 import '@/assets/styles/font.scss'
 import '@/assets/styles/layout.scss'
+import '@/assets/styles/global.scss'
 
 createApp(App).mount('#app')

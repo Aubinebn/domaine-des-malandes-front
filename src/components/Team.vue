@@ -158,7 +158,7 @@
     }
 
     &__dots {
-        grid-column: 1 / none;
+        grid-column: 1 / -1;
         justify-self:center;
     }
 }
@@ -225,6 +225,142 @@
         grid-column: 1 / 3;
         width: 50%;
         justify-self: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .team {
+        margin-top: 80px;
+    }
+
+    .top-icon {
+        grid-column: 5 / 9;
+    }
+
+    .title-text {
+        grid-column: 5 / 9;
+    }
+
+    .title-before {
+        grid-column: 4 / 5;
+    }
+
+    .title-after {
+        grid-column: 9 / 10;
+    }
+
+    .quote {
+        grid-column: 4 / 10;
+    }
+
+    .content {
+        &__text {
+            grid-column: 2 / 7;
+        }
+
+        &__images {
+            grid-column: 7 / 13;
+        }
+    }
+
+    .background-logo {
+        top: -360px;
+    }
+}
+
+@media (max-width: 992px) {
+    .team {
+        margin-top: 120px;
+    }
+
+    .background-logo {
+        top: -280px;
+        opacity: 0.16;
+    }
+
+    .quote {
+        grid-column: 3 / 11;
+    }
+
+    .cover {
+        margin: 24px 0;
+    }
+
+    .content {
+        row-gap: 22px;
+
+        &__text{
+            grid-column: 1 / 8;
+        }
+
+        &__images {
+            grid-column: 8 / -1;
+        }
+
+        &__text {
+            margin-right: 0;
+        }
+
+        &__images {
+            margin-top: 30px;
+        }
+    }
+
+    .images,
+    .background-shapes {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team {
+        margin-top: 100px;
+    }
+
+    .top-icon {
+        grid-column: 1 / -1;
+    }
+
+    .title-text {
+        grid-column: 1 / -1;
+    }
+
+    .quote {
+        grid-column: 1 / -1;
+        font-size: 20px;
+        margin: 12px 0 0;
+    }
+
+    .cover {
+        margin: 20px 0;
+    }
+
+    .content {
+        &__text {
+            grid-column: 1 / -1;
+        }
+
+        &__images {
+            display: none;
+        }
+
+        &__dots {
+            margin-top: 20px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .team {
+        margin-top: 60px;
+    }
+
+    .background-logo {
+        opacity: 0.12;
+    }
+
+    .cover {
+        margin: 16px 0;
     }
 }
 

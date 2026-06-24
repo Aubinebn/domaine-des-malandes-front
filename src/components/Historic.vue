@@ -53,9 +53,9 @@
         id="historic"
         class="historic menu-section"
     >
-        <div class="separator">
-            <div class="separator__line"></div>
-            <img class="separator__end" src="/graphic-elements/losange_red.svg">
+        <div class="title-upper-separator">
+            <div class="title-upper-separator__line"></div>
+            <img class="title-upper-separator__end" src="/graphic-elements/losange_red.svg">
         </div>
 
         <div class="container grid-container">
@@ -94,29 +94,12 @@
         
 <style scoped lang="scss">
 
-.separator {
-    display: flex;
-    align-items: center;
-    margin: 12px 0;
-    
-    &__line {
-        width: 35%;
-        height: 1px;
-        background-color: $bg-color-red;
-    }
-
-    &__end {
-        margin-left: -3px;
-        margin-bottom: -1px;
-    }
-}
-
 .historic {
     margin: 80px 0;
 
     &__title {
         grid-row: 1;
-        grid-column: 2 / none;
+        grid-column: 2 / -1;
     }
 
     &__timeline {
@@ -173,4 +156,76 @@
         right: -100px;
     }
 }
+
+@media (max-width: 1200px) {
+    .historic {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .historic {
+        margin-top: 50px;
+
+        &__quote {
+            grid-column: 4 / span 6;
+            font-size: 28px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .historic {
+
+        &__title {
+            grid-column: 1 / -1;
+        }
+
+        &__timeline {
+            grid-column: 1 / -1;
+        }
+
+        &__quote {
+            grid-column: 2 / 12;
+            font-size: 26px;
+        }
+    }
+
+    .title {
+        margin-left: 0;
+    }
+
+    .background-logo {
+        &--top {
+            width: 400px;
+            right: -200px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .historic {
+        margin-top: 40px;
+
+        &__quote {
+            font-size: 24px;
+        }
+    }
+
+    .background-logo {
+        opacity: 0.2;
+
+        &--top {
+            width: 300px;
+            right: -150px;
+            top: -50px;
+        }
+
+        &--bottom {
+            bottom: -50px;
+            left: -50px;
+        }
+    }
+}
+
 </style>

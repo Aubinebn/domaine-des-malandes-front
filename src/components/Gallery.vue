@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
 import api from '@/services/api'
 import { getImageUrl } from '@/utils/url'
 import Vue3JustifiedLayout from 'vue3-justified-layout'
@@ -11,7 +11,28 @@ import 'photoswipe/style.css'
 
 const galleryData = ref<any>(null)
 const images = ref<any[]>([])
+const viewportWidth = ref(window.innerWidth)
 let lightbox: any = null
+
+const galleryOptions = computed(() => {
+    if (viewportWidth.value <= 576) {
+        return { targetRowHeight: 140, boxSpacing: 6 }
+    }
+
+    if (viewportWidth.value <= 768) {
+        return { targetRowHeight: 160, boxSpacing: 6 }
+    }
+
+    if (viewportWidth.value <= 992) {
+        return { targetRowHeight: 190, boxSpacing: 7 }
+    }
+
+    if (viewportWidth.value <= 1200) {
+        return { targetRowHeight: 210, boxSpacing: 8 }
+    }
+
+    return { targetRowHeight: 220, boxSpacing: 8 }
+})
 
 async function getGalleryData() {
     const res = await api.get('/galerie?populate=images')
@@ -43,12 +64,12 @@ function initPhotoSwipe() {
 <template>
     <div v-if="galleryData" id="gallery" class="gallery">
         
-        <div class="separator">
-            <div class="separator__line"></div>
-            <img class="separator__end" src="/graphic-elements/losange_red.svg">
+        <div class="title-upper-separator">
+            <div class="title-upper-separator__line"></div>
+            <img class="title-upper-separator__end" src="/graphic-elements/losange_red.svg">
         </div>
 
-        <div class="container">
+        <div class="container grid-container">
             <h2 class="title">
                 <img class="title__icon"
                     src="/graphic-elements/square_losange_red.svg"
@@ -59,7 +80,7 @@ function initPhotoSwipe() {
             <Vue3JustifiedLayout
                 v-model:list="images"
                 class="pswp-gallery"
-                :options="{ targetRowHeight: 220, boxSpacing: 8 }"
+                :options="galleryOptions"
             >
                 <template #default="{ item }">
                     <a
@@ -81,6 +102,7 @@ function initPhotoSwipe() {
 
 <style scoped lang="scss">
 .pswp-gallery {
+    grid-column: 1 / -1;
     width: 100%;
 }
 
@@ -101,38 +123,43 @@ function initPhotoSwipe() {
     transform: scale(1.1);
 }
 
-.separator {
-    display: flex;
-    align-items: center;
-    margin: 12px 0;
-    
-    &__line {
-        width: 35%;
-        height: 1px;
-        background-color: $bg-color-red;
-    }
-
-    &__end {
-        margin-left: -3px;
-        margin-bottom: -1px;
-    }
-}
-
 .title {
     display: flex;
+    align-items: center;
     margin-left: -40px;
+    grid-column: 2 / -1;
 
     &__icon {
-        padding: 7px 0 8px;
+        width: 40px;
+        height: 40px;
         line-height: 0.8;
         display: inline-block;
         margin-right: 20px;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .gallery {
-        margin: 80px auto;
+        margin: 90px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        margin: 70px auto;
+    }
+    
+    .title {
+        &__icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery {
+        margin: 56px auto;
     }
 }
 </style>
