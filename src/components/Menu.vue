@@ -25,7 +25,7 @@
             const rect = section.getBoundingClientRect();
 
             //-- récupère la propriété data-offset-top de la section
-            let offsetTop = section.getAttribute('data-offset-top') ?? 0;
+            let offsetTop = parseFloat(section.getAttribute('data-offset-top') ?? '0');
             offsetTop = window.innerHeight * offsetTop / 100;
             
             if (rect.top + offsetTop <= window.innerHeight * 0.7 && 
